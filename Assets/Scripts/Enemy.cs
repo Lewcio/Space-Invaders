@@ -13,10 +13,15 @@ public class Enemy : MonoBehaviour {
 	void Start ()
     {
         winText.text = "";
+        //Color color = winText.color;  //  makes a new color zm
+        //color.a = 0.0f;
+        //winText.color = color;
+        // or like this
+        winText.CrossFadeAlpha(0, 0.1f, false);
         speed = 0.5f;
         hardness = 95;
         InvokeRepeating("Run", 0.1f, 0.8f);
-        InvokeRepeating("Shot", 2f, Random.Range(0.1f, 2f));
+        InvokeRepeating("Shot", 4f, Random.Range(0.1f, 2f));
         enemies = GetComponent<Transform>();
 	}
 
@@ -53,6 +58,7 @@ public class Enemy : MonoBehaviour {
         }
         if (enemies.childCount == 0)
         {
+            winText.CrossFadeAlpha(1, 2.0f, false);
             winText.text = "FUCK YOUR LIFE\nYOU WIN";
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour {
+    //Score score;
     private Transform bullet;
     public float speed;
     // Use this for initialization
@@ -24,6 +25,7 @@ public class EnemyBullet : MonoBehaviour {
             GameObject gObject = collision.gameObject;
             Box box = gObject.GetComponent<Box>();
             box.health -= 0.3f;
+            //score.minus(100);
             Destroy(gameObject);
         }
     }

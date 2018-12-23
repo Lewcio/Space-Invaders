@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     private Transform bullet;
     public float speed;
+    //public Score score;
 	// Use this for initialization
 	void Start () {
         bullet = GetComponent<Transform>();
@@ -22,6 +23,7 @@ public class Bullet : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Enemy") {
+            //score.plus(50);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             // add points
@@ -29,6 +31,7 @@ public class Bullet : MonoBehaviour {
             GameObject gObject = collision.gameObject;
             Box box = gObject.GetComponent<Box>();
             box.health -= 0.3f;
+            //score.minus(200);
             Destroy(gameObject);
         }
     }
